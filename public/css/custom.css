@@ -1,0 +1,49 @@
+#cust1
+{
+    background-color: rgb(41, 41, 139);
+}
+
+#cust2
+{
+    background-color: rgb(25, 25, 78);
+}
+
+#cust2 h1
+{
+    padding-left: 100px;
+}
+
+#cust3
+{
+    margin-top: -60px;
+}
+div img
+{
+    margin-left: 40px;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}
+
+h2
+{
+    color: rgba(39, 31, 31, 0.726);
+}
+
+h6 
+{
+    color: rgba(14, 12, 12, 0.541);
+}
+
+#cust4
+{
+    padding-right: 10px;
+}
+
+#cust4
+{
+    margin-left: 40px;
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+}
