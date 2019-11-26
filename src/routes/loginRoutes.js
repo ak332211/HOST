@@ -15,7 +15,20 @@ function router(nav) {
 
     loginRouter.route('/save')
         .post(function (req, res) {
-            console.log(req.body);
+            //console.log(req.body);
+
+            signupModel.findOne({email:req.body.emls, password:req.body.pwd},(err,data)=>{
+                if(err){
+                    res.json({status:"error"})
+                    throw err;
+                }
+                else if(!data){
+                    res.json({status:"failed"});
+                }
+                else{
+                    res.json({status:"Success"})
+                }
+            });
         })
 
 

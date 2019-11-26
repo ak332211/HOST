@@ -16,7 +16,17 @@ function router(nav) {
 
     signupRouter.route('/save')
         .post(function (req, res) {
-            console.log(req.body);
+            //console.log(req.body);
+            var add =  new signupModel(req.body);
+            add.save((error, data)=>{
+                if(error)
+                {
+                    res.json({status:"Failed"});
+                }
+                else{
+                    res.json({status:"Success"});
+                }
+            })
         })
 
 
