@@ -1,24 +1,47 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 
-var signupSchema=new mongoose.Schema({
+var signupSchema = new mongoose.Schema(
+    {
+        username: {
+            type: String,
+            required: true
+        },
 
-    name: String,
+        emls: {
+            type: String,
+            required: true
+        },
 
-    email:String,
+        dob: {
+            type: Date,
+            required: true
+        },
 
-    phone:Number,
+        gender: {
+            type: String,
+            required: true
+        },
 
-    password:String,
+        nmb: {
+            type: Number,
+            required: true
+        },
 
-    cpassword:String,
+        pwd: {
+            type: String,
+            required: true
+        },
 
-    dob:Date,
+        cpwd: {
+            type: String,
+            required: true
+        },
 
-    gender:String,
-    
-    agree:{type:String,
-            required:true}
+        agree: {
+            type: String,
+            required: true
+        }
 
-});
-var signupModel=mongoose.model('logdata',signupSchema);
-module.exports={signupModel}
+    });
+var signupModel = mongoose.model('users', signupSchema);
+module.exports = { signupModel }

@@ -1,7 +1,7 @@
 var express = require('express');
 var booksRouter = express.Router();
 
-var {bookModel} = require('../models/bookModel');
+var { bookModel } = require('../models/bookModel');
 
 
 
@@ -43,26 +43,24 @@ function router(nav) {
 
 
     booksRouter.route('/')
-        .get( (req, res)=> {
-            bookModel.find( (error, data)=>{
+        .get((req, res) => {
+            bookModel.find((error, data) => {
 
-                test=data;
+                test = data;
 
-                if(error)
-                {
+                if (error) {
                     throw error;
                 }
-                else{
+                else {
                     // res.json(data);
                     res.render('books', {
                         nav,
                         title: "BOOKS",
-                        books:data
+                        books: data
                     })
                 }
-        
-                })
 
+            })
         })
 
 
@@ -79,46 +77,86 @@ function router(nav) {
     booksRouter.route('/save')
         .post(function (req, res) {
 
-            // res.send("Form Submitted");
-
-
-
             // console.log(req.body.title);
-
-
             var books = new bookModel(req.body);
-            // books.save();
 
-            books.save( (error, data)=>{
+            books.save((error, data) => {
 
-                if(error)
-                {
-
-                    // res.send(error);
-                    res.json({"status":"eror"});
+                if (error) {
+                    res.json({ status: "eror" });
                     // throw error;
-
                 }
-
-                else{
-                    res.json({"status":"success"});
+                else {
+                    res.json({ status: "success" });
                 }
             })
-
         })
 
 
-    booksRouter.route('/:id')                       //used for accepting value coming from html page
-        .get(function (req, res) {
-            const id = req.params.id;
+    booksRouter.route('/readmore')
+        .post(function (req, res) {
+            bookModel.findById(req.body.id, (error, data) => {
+                if (error) {
+                    res.json({ status: "Error" });
+                    // throw error;
+                }
+                else {
+                    console.log(data);
+                    res.render('book',
+                        {
+                            nav,
+                            title: "Book",
+                            book: data
+                        })
 
-            res.render('book',
-                {
-                    nav,
-                    title: "Book",
-                    book: test[id]
-                });
+                }
+            })
+        })
 
+
+    booksRouter.route('/edit')
+        .post(function (req, res) {
+            bookModel.findById(req.body.id, (error, data) => {
+                if (error) {
+                    res.json({status: "Error" });
+                    // throw error;
+                }
+                else {
+                    res.render('bookUpdate',
+                        {
+                            nav,
+                            title: "Update Book",
+                            data
+                        })
+
+                }
+            })
+        })
+
+    booksRouter.route('/update')
+        .post(function (req, res) {
+            bookModel.findByIdAndUpdate(req.body.id, { $set: req.body }, (error, data) => {
+                if (error) {
+                    res.json({ status: "Error" });
+                }
+                else {
+                    // console.log(req.body);
+                    // console.log(data);
+                    res.redirect("/books");
+                }
+            })
+        })
+
+    booksRouter.route('/delete')
+        .post(function (req, res) {
+            bookModel.findByIdAndDelete(req.body.id, (error, data) => {
+                if (error) {
+                    res.json({ status: "Error" });
+                }
+                else {
+                     res.redirect("/books");
+                }
+            })
         })
 
     return booksRouter;

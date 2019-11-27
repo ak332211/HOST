@@ -27,7 +27,7 @@ function validateform(form)
 
 function validatelogin()
 {
-    alert("Logged In");
+    // alert("Logged In");
     // return false;
 }
 

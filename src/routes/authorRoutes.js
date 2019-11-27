@@ -39,16 +39,30 @@ var authors = [
     }
 ]
 
+var test=[];
+
 
 function router(nav) {
+    
     authorRouter.route('/')
         .get(function (req, res) {
-            res.render('authors',
-                {
-                    nav,
-                    title: "Authors",
-                    authors
-                });
+            authorModel.find((error,data)=>{
+                if(error){
+                    throw errorr;
+                }
+                else{
+
+                    test=data;
+                 
+                    res.render('authors', 
+                    {
+                        nav,
+                        title: "Authors",
+                        authors:data
+                     
+                    })
+                }
+            });
         })
 
     authorRouter.route('/add')
@@ -61,9 +75,7 @@ function router(nav) {
                 });
 
         })
-
-
-    
+  
     
         authorRouter.route('/save')
         .post(function (req, res) {
@@ -76,13 +88,13 @@ function router(nav) {
                 if(error)
                 {
 
-                    res.json({"status":"eror"});
+                    res.json({status:"eror"});
                     // throw error;
 
                 }
 
                 else{
-                    res.json({"status":"success"});
+                    res.json({status:"success"});
                 }
             })
 
@@ -96,7 +108,7 @@ function router(nav) {
                 {
                     nav,
                     title: "Author",
-                    author: authors[id]
+                    author: test[id]
 
                 });
 

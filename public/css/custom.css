@@ -47,3 +47,15 @@ h6
     width: 160px;
     border-radius: 50%;
 }
+
+#btn
+{
+    border: none;
+    background: none;
+    padding: 0px;
+    color: rgb(51, 53, 187);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+

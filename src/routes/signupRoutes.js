@@ -1,6 +1,7 @@
 var express = require('express');
 var signupRouter = express.Router();
 
+var { signupModel } = require('../models/signupModel');
 
 function router(nav) {
     signupRouter.route('/')

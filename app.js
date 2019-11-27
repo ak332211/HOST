@@ -55,19 +55,11 @@ var nav = [
     }
 ];
 
-const booksRouter = require('./src/routes/bookRoutes')(nav);        //passig nav to 'booksRouter' seperate file...we r passing 
-//'nav' array as an argument to the function in booksrouter page
-
+const booksRouter = require('./src/routes/bookRoutes')(nav);            //'nav' array as an argument to the function in booksrouter page  
 const authorRouter = require('./src/routes/authorRoutes')(nav);
-
-
-
-
 const signupRouter = require('./src/routes/signupRoutes')(nav);
 const loginRouter = require('./src/routes/loginRoutes')(nav);
 const contactusRouter = require('./src/routes/contactusRoutes')(nav);
-
-
 
 
 app.use(express.static(path.join(__dirname, "/public")));
@@ -78,32 +70,23 @@ app.use(cors());
 app.use(bodyparser.urlencoded({ extended: true }));
 
 
-app.use('/books', booksRouter);        //for booksRouter
-app.use('/authors', authorRouter);      //for authorRouter
-
-
-
-
+app.use('/books', booksRouter);        
+app.use('/authors', authorRouter);      
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/contactus', contactusRouter);
 
 
-
 mongoose.connect("mongodb+srv://akDb:hello12345@cluster0-cnapv.mongodb.net/test?retryWrites=true&w=majority")
 
-// mongoose.connect("mongodb://localhost:27017/MyLibraryDb")        //local database way
-
+// mongoose.connect("mongodb://localhost:27017/MyLibraryDb")        
 
 
 app.set('views', './src/views');            //we are setting the 'views' from the specified path on the right
-app.set('view engine', 'ejs');              //we are setting the 'view engine' as 'ejs'
+app.set('view engine', 'ejs');             
 
 
-
-
-
-app.get('/', function (req, res) {            //either app.all() or app.get()
+app.get('/', function (req, res) {            
 
     res.render('index',
         {
@@ -113,13 +96,7 @@ app.get('/', function (req, res) {            //either app.all() or app.get()
 
 });
 
-
-app.listen(process.env.PORT || 4500, function () {              //process.env.port for heroku hosting(for dynamic acquiring of port in web host)
-    // console.log("listening to port 8000")
+app.listen(process.env.PORT || 4500, function () {              
     console.log("Listening to port " + chalk.yellow('4500'));
 
 });
-
-
-
-

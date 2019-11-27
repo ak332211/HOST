@@ -1,17 +1,6 @@
 const mongoose = require('mongoose')
 
-// var bookModel = mongoose.model('books' ,
-// {
-
-//     title:String,
-//     author:String,
-//     genre:String,
-//     image:String
-
-// });
-
-
-var studentSchema = new mongoose.Schema(
+var bookSchema = new mongoose.Schema(
     {
         title:{
             type:String,
@@ -35,7 +24,7 @@ var studentSchema = new mongoose.Schema(
     }
 )
 
-var bookModel = mongoose.model('books' , studentSchema);
+var bookModel = mongoose.model('books' , bookSchema);
 
 
 

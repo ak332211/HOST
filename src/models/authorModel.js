@@ -7,16 +7,15 @@ var authorSchema = new mongoose.Schema(
             type:String,
             required:true
         },
-
-        dob:{
-            type:Date,
-            required:true
-        },
-        
         country:{
             type:String,
             required:true
+        },
+        image:{
+            type:String,
+            required:true
         }
+
     }
 )
 

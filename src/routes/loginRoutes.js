@@ -1,6 +1,7 @@
 var express = require('express');
 var loginRouter = express.Router();
 
+var { signupModel } = require('../models/signupModel');
 
 function router(nav) {
     loginRouter.route('/')
@@ -17,8 +18,8 @@ function router(nav) {
         .post(function (req, res) {
             //console.log(req.body);
 
-            signupModel.findOne({email:req.body.emls, password:req.body.pwd},(err,data)=>{
-                if(err){
+            signupModel.findOne({username:req.body.username, pwd:req.body.pwd},(error,data)=>{
+                if(error){
                     res.json({status:"error"})
                     throw err;
                 }

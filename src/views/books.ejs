@@ -45,14 +45,18 @@
                             <% for(var i=0; i<books.length; i++) { %>
 
                             <div class="col-sm-2">
-                                <img src="/images/<%=books[i].image%>">
+                                <img src="/images/<%=books[i].image%>" alt="image">
                             </div>
 
                             <div class="col-sm-10">
                                 <h2><%=books[i].title %></h2>
                                 <h6><%=books[i].author %></h6>
 
-                                <a href="/books/<%=i%>">READMORE</a>
+                                <!-- <a href="/books/<%=i%>">READMORE</a> -->
+                                <form action="/books/readmore" method="POST">
+                                    <input type="hidden" name='id' value='<%=books[i]._id%>'>
+                                    <button type="submit" id='btn'>READMORE</button>
+                                </form>
 
                             </div>
 
@@ -65,9 +69,6 @@
 
                         </div>
                     </div>
-
-
-
 
 </body>
 
