@@ -18,7 +18,7 @@ function router(nav) {
         .post(function (req, res) {
             //console.log(req.body);
 
-            signupModel.findOne({username:req.body.username, pwd:req.body.pwd},(error,data)=>{
+            signupModel.findOne({emls:req.body.emls, pwd:req.body.pwd},(error,data)=>{
                 if(error){
                     res.json({status:"error"})
                     throw err;

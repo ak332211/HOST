@@ -25,8 +25,16 @@ function validateform(form)
 
 }
 
-function validatelogin()
+function validatelogin(form)
 {
+    var eml=form.emls.value;
+    var email_re=/\S+@\S+\.\S+/;
+
+    if(email_re.test(eml)==false)
+    {
+        alert("Enter proper mail id");
+        return false;
+    }
     // alert("Logged In");
     // return false;
 }
